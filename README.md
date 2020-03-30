@@ -7,11 +7,10 @@ This app is being made with educational purposes in mind.
 # Development
 
 * Pull the repo
-* Install `pipenv`
+* Install `pipenv` and docker runtime
 * Open project root directory
+* Run `docker-compose up -d --build` to start database container
 * Run `pipenv update`
-* Run `docker build --tag ac-friends .` to start database container
-* Run `pipenv run python manage.py migrate` to apply migrations
 * Run `pipenv run python manage.py createsuperuser` to create admin panel superuser
 
 

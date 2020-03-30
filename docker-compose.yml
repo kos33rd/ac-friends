@@ -5,7 +5,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
-      - 5431:5432
+      - 5432:5432
+
   api:
     build: .
     command: /app/run.sh
@@ -19,5 +20,16 @@ services:
       - db
     links:
       - db:db
+
+  web:
+    build: ./web
+    ports:
+      - 8001:8000
+
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+
 volumes:
   postgres_data:

@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'HOST': 'db',  # set in docker-compose.yml
-        'PORT': 5431  # non-default postgres port to make no conflicts with local server (if presents)
+        'PORT': 5432
     }
 }
 
@@ -153,7 +153,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  # django-oauth-toolkit >= 1.0.0
     ),
 }
 
