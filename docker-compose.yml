@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     links:
-      - db:db
+      - db
 
   web:
     build: ./web
@@ -27,9 +27,15 @@ services:
       - 8001:8000
 
   nginx:
-    image: nginx
+    build: ./nginx
     ports:
       - 80:80
+    depends_on:
+      - web
+      - api
+    links:
+      - web
+      - api
 
 volumes:
   postgres_data:
