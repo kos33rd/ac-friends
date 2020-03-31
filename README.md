@@ -26,6 +26,7 @@ Backend stack:
 * Python 3.8
 * Django 3
 * Django REST framework
+* [Django REST Framework Social OAuth2](https://github.com/RealmTeam/django-rest-framework-social-oauth2)
 * PostgreSQL
 * Docker
 

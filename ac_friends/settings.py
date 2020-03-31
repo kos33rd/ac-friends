@@ -25,7 +25,12 @@ SECRET_KEY = 'yvbny6$o6hsz4vj84wt145vx*$^o5n!@7s0)k!0t*-oe-__mgo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'api',
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+]
 
 
 # Application definition
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'oauth2_provider',
     'social_django',
     'rest_framework_social_oauth2',
@@ -45,6 +51,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,6 +83,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ac_friends.wsgi.application'
 
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8080",
+]
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -120,9 +130,11 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+DRFSO2_PROPRIETARY_BACKEND_NAME = 'Google'
+
 # Google oAuth2 configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'TODO'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'TODO'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '810585960469-6t1dll32bf956ib0ia1q34kvncrr0m98.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Z-pUb4AqdiFz15rPLlUEmINb'
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 

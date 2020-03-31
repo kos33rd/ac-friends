@@ -10,11 +10,13 @@
     "start": "webpack-dev-server --hot --mode development"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-hot-loader": "^4.12.20",
-    "lodash": "^4.17.15",
-    "moment": "^2.24.0"
+    "react-google-login": "^5.1.2",
+    "react-hot-loader": "^4.12.20"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.9.4",

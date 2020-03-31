@@ -51,7 +51,7 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url('', include('social_django.urls', namespace='social')),
+    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
     url(r'^', include(router.urls)),
     path('users/', UserList.as_view()),
     path('users/<id>/', UserDetails.as_view()),
