@@ -21,9 +21,13 @@ const responseGoogle = (profileResponse) => {
   })
     .then(({data}) => {
       localStorage.setItem('accessToken', data.access_token)
-      api.get('sampleapi')
-        .then(res => console.log('sampleapi', res))
-        .catch(err => console.log('sampleapi err', err))
+      api.get('players')
+        .then(res => console.log('players', res))
+        .catch(err => console.log('players err', err))
+
+      api.get('profile')
+        .then(res => console.log('profile', res))
+        .catch(err => console.log('profile err', err))
 
     })
     .catch(err => console.log('R', err))

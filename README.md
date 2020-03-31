@@ -14,7 +14,7 @@ This app is being made with educational purposes in mind.
 * Run `pipenv run python manage.py createsuperuser` to create admin panel superuser
 
 
-## Backend technology stack
+## Backend tech stack
 
 * Python 3.8
 * Django 3
@@ -23,7 +23,7 @@ This app is being made with educational purposes in mind.
 * PostgreSQL
 * Docker
 
-## Frontend stack
+## Frontend tech stack
 
 * Webpack
 * React + Redux

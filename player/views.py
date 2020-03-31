@@ -1,5 +1,7 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 from .models import Player
 from .serializers import PlayerSerializer
@@ -13,10 +15,8 @@ def players_list(request):
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def profile(request):
-    # TODO: Use current logged in user ID for profile request
-    print(request.user, request.auth)
-
-    profile = Player.objects.first()
-    serializer = PlayerSerializer(profile, many=False)
+    user_profile = get_object_or_404(Player, user_id=request.user)
+    serializer = PlayerSerializer(user_profile, many=False)
     return JsonResponse(serializer.data, safe=False)
