@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.models import User
 from rest_framework import routers, generics, permissions, serializers, viewsets
+from player.views import sample_api
 
 
 # Serializers define the API representation.
@@ -53,6 +54,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
     url(r'^', include(router.urls)),
-    path('users/', UserList.as_view()),
-    path('users/<id>/', UserDetails.as_view()),
+    # path('users/', UserList.as_view()),
+    # path('users/<id>/', UserDetails.as_view()),
+    path('sampleapi/', sample_api)
 ]

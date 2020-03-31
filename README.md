@@ -31,12 +31,7 @@ Backend stack:
 * Docker
 
 
-Models:
-    * User (django system model)
-    * Player - is User
-    * Friends - is unique relation of Player and Player
-
 URLs:
-    * /profile (equals to /players/{loggedInUserId})
+    * /profile (same as /players/{loggedInUserId})
     * /players
     * /players/{userId} (equal to /{userId})
