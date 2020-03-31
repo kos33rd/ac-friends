@@ -14,15 +14,8 @@ This app is being made with educational purposes in mind.
 * Run `pipenv run python manage.py createsuperuser` to create admin panel superuser
 
 
-## Backend architecture
+## Backend technology stack
 
-Apps:
-
-* Player registration process and personal profile - `player`
-* Public players registry - `registry`
-
-
-Backend stack:
 * Python 3.8
 * Django 3
 * Django REST framework
@@ -30,8 +23,8 @@ Backend stack:
 * PostgreSQL
 * Docker
 
+## Frontend stack
 
-URLs:
-    * /profile (same as /players/{loggedInUserId})
-    * /players
-    * /players/{userId} (equal to /{userId})
+* Webpack
+* React + Redux
+* Material UI
