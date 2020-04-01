@@ -50,7 +50,7 @@ export const Header = () => {
         </Typography>
         <GoogleLogin
           clientId={GOOGLE_CLIENT_ID}
-          buttonText="Join with Google"
+          buttonText="Join us with Google"
           onSuccess={handleAuthSuccess}
           onFailure={handleAuthSuccess}
           cookiePolicy={'single_host_origin'}

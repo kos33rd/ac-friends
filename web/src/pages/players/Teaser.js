@@ -32,7 +32,10 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: 0,
     left: 0,
-    padding: '70px 40px',
+    padding: '80px 40px',
+    [theme.breakpoints.down('md')]: {
+      padding: '70px 40px',
+    },
     [theme.breakpoints.down('sm')]: {
       padding: '50px 40px',
     },
@@ -57,19 +60,17 @@ export const Teaser = () => {
     <div className={classes.container}>
       <Grid container>
 
-
         <Grid item xs={8}>
-          <Typography variant='h2' component='h4'>Welcome, villager</Typography>
+          <Typography variant='h2' component='h4'>Welcome, villager 🌻</Typography>
           <div className={classes.banner}>
             <img src={textBubble} className={classes.textBubble} />
             <p className={classes.text}>
               <Typography variant='h4' component='h2'>
-                Here you can find a friend to play Animal Crossing online with.
+                Here you can find a friends to play Animal Crossing online with.
               </Typography>
             </p>
           </div>
         </Grid>
-
 
         <Grid item xs={4}>
           <div className={classes.villagerImage} />

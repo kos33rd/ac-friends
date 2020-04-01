@@ -9,6 +9,7 @@ services:
 
   api:
     build: .
+    image: kos33rd/ac-friends-api
     command: /app/run.sh
     volumes:
       - .:/app
@@ -23,11 +24,13 @@ services:
 
   web:
     build: ./web
+    image: kos33rd/ac-friends-web
     ports:
       - 8001:8000
 
   nginx:
     build: ./nginx
+    image: kos33rd/ac-friends-nginx
     ports:
       - 80:80
     depends_on:
