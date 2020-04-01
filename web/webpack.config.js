@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const config = {
   entry: [
@@ -86,7 +88,28 @@ const config = {
       title: 'AC: New Friends'
     }),
     new LodashModuleReplacementPlugin,
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+    new FaviconsWebpackPlugin({
+      favicons: {
+        appName: 'AC: New Friends',
+        appDescription: 'Animal Crossing: New Friends',
+        developerName: 'kos33rd',
+        background: '#F6F7EB',
+        theme_color: '#F6F7EB'
+      }
+    }),
+    new HtmlWebpackTagsPlugin({
+      links: [
+        {
+          path: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap',
+          attributes: { rel: 'stylesheet' }
+        },
+        {
+          path: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+          attributes: { rel: 'stylesheet' }
+        }
+      ]
+    }),
   ]
 };
 

@@ -26,5 +26,6 @@ This app is being made with educational purposes in mind.
 ## Frontend tech stack
 
 * Webpack
-* React + Redux
+* Babel
+* React + Effector
 * Material UI
