@@ -56,7 +56,8 @@ const config = {
           {
             loader: 'url-loader',
             options: {
-              mimetype: 'image/png'
+              mimetype: 'image/png',
+              limit: 8192,
             }
           }
         ]

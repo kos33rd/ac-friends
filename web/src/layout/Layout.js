@@ -15,6 +15,7 @@ const useLayoutStyles = makeStyles((theme) => ({
 }))
 
 const theme = createMuiTheme({
+
   palette: {
     primary: {
       main: '#f7c539'
@@ -22,6 +23,9 @@ const theme = createMuiTheme({
     secondary: {
       main: '#9a6033'
     },
+    background: {
+      default: '#E4E4E4'
+    }
   },
 })
 

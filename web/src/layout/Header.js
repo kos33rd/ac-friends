@@ -11,7 +11,6 @@ import { GOOGLE_CLIENT_ID } from '../data/constants'
 import { authorizeWithGoogle } from '../data/authorizeWithGoogle'
 import api from '../data/api'
 import { loadProfile } from '../data/stores/profile'
-import { loadPlayers } from '../data/stores/players'
 
 const useStyles = makeStyles((theme) => ({
   toolbarWrapper: {
@@ -51,7 +50,7 @@ export const Header = () => {
         </Typography>
         <GoogleLogin
           clientId={GOOGLE_CLIENT_ID}
-          buttonText="Log In with Google"
+          buttonText="Join with Google"
           onSuccess={handleAuthSuccess}
           onFailure={handleAuthSuccess}
           cookiePolicy={'single_host_origin'}
@@ -60,4 +59,3 @@ export const Header = () => {
     </AppBar>
   )
 }
-
