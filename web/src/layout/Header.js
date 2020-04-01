@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import CameraIcon from '@material-ui/icons/PhotoCamera';
+import GroupIcon from '@material-ui/icons/Group'
 import { makeStyles } from '@material-ui/core/styles'
 import { GoogleLogin } from 'react-google-login'
+import { IconButton } from '@material-ui/core';
 
 import { GOOGLE_CLIENT_ID } from '../data/constants'
 import { authorizeWithGoogle } from '../data/authorizeWithGoogle'
@@ -13,6 +14,14 @@ import { loadProfile } from '../data/stores/profile'
 import { loadPlayers } from '../data/stores/players'
 
 const useStyles = makeStyles((theme) => ({
+  toolbarWrapper: {
+    maxWidth: 1280,
+    margin: '0 auto',
+    display: 'flex',
+  },
+  toolbar: {
+    flex: 1,
+  },
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -25,19 +34,18 @@ export const Header = () => {
   const classes = useStyles();
 
   const handleAuthSuccess = (...args) => authorizeWithGoogle(...args)
-    .then(() => {
-      api.get('players')
-        .then(res => loadPlayers(res.data))
-        .catch(err => console.error('Error fetching players list', err))
+    .then(() =>
       api.get('profile')
         .then(res => loadProfile(res.data))
         .catch(err => console.error('Error fetching user profile', err))
-    })
+    )
 
   return (
     <AppBar position="relative">
-      <Toolbar>
-        <CameraIcon className={classes.icon} />
+      <Toolbar className={classes.toolbar}>
+        <IconButton className={classes.icon} color='secondary'>
+          <GroupIcon />
+        </IconButton>
         <Typography variant="h6" color="inherit" noWrap className={classes.title}>
           Animal Crossing: New Friends
         </Typography>

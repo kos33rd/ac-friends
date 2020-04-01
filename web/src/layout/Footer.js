@@ -25,7 +25,7 @@ export const Footer = () => {
         Footer
       </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-        Something here to give the footer a purpose!
+        Here will be a short text about project and author with github and email links.
       </Typography>
       <Copyright />
     </footer>
