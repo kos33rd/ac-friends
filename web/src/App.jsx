@@ -1,51 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { hot } from 'react-hot-loader/root';
 import { GoogleLogin } from 'react-google-login';
-import axios from 'axios';
 
 import api from './data/api';
+import { GOOGLE_CLIENT_ID } from './data/constants'
+import { authorizeWithGoogle } from './data/authorizeWithGoogle'
 
-const GOOGLE_CLIENT_ID = '810585960469-6t1dll32bf956ib0ia1q34kvncrr0m98.apps.googleusercontent.com'
-const API_CLIENT_ID = 'AeHpsZrOk4pJxSzRCx6OV6k9HSU4M9q2QfM4EqAs'
-const API_CLIENT_SECRET = '5M7qczd8UvuQA58rerF5rwAFrrezGyiNG4NwEDj7pxXjJX0fZwPIq7xS1OSyOaGqhrvnoVloyOW7FkcVdqwnB6F3aQXfgZ9yGZ82NIzKLjRrlit9ed3wgwL3UOjKBLGd'
 
-const responseGoogle = (profileResponse) => {
-  console.log('profileResponse', profileResponse);
-  const googleAccessToken = profileResponse.accessToken
-  api.post('auth/convert-token', {
-    grant_type: 'convert_token',
-    client_id: API_CLIENT_ID,
-    client_secret: API_CLIENT_SECRET,
-    backend: 'google-oauth2',
-    token: googleAccessToken,
-  })
-    .then(({data}) => {
-      localStorage.setItem('accessToken', data.access_token)
+const App = () => {
+  const [profile, setProfile] = useState()
+  const [players, setPlayers] = useState()
+
+  const handleAuthSuccess = (...args) => authorizeWithGoogle(...args)
+    .then(() => {
       api.get('players')
-        .then(res => console.log('players', res))
-        .catch(err => console.log('players err', err))
-
+        .then(res => setPlayers(res.data))
+        .catch(err => console.error('Error fetching players list', err))
       api.get('profile')
-        .then(res => console.log('profile', res))
-        .catch(err => console.log('profile err', err))
-
+        .then(res => setProfile(res.data))
+        .catch(err => console.error('Error fetching user profile', err))
     })
-    .catch(err => console.log('R', err))
-}
 
-class App extends React.Component {
-  render() {
-    return (<section>
-      <h1>Animal Crossing: New Friends App scaffold here</h1>
-      <GoogleLogin
-        clientId={GOOGLE_CLIENT_ID}
-        buttonText="Log In with Google"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
-      />
-    </section>);
-  }
+  return (<section>
+    <h1>Animal Crossing: New Friends App scaffold here</h1>
+    <GoogleLogin
+      clientId={GOOGLE_CLIENT_ID}
+      buttonText="Log In with Google"
+      onSuccess={handleAuthSuccess}
+      onFailure={handleAuthSuccess}
+      cookiePolicy={'single_host_origin'}
+    />
+
+    <h3>User profile:</h3>
+    <pre>
+      {JSON.stringify(profile, null, 2)}
+    </pre>
+
+    <h3>Public players list:</h3>
+    <pre>
+      {JSON.stringify(players, null, 2)}
+    </pre>
+
+  </section>);
 }
 
 export default hot(App);

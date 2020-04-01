@@ -9,7 +9,7 @@ from .serializers import PlayerSerializer
 
 @api_view(["GET"])
 def players_list(request):
-    all_players = Player.objects.all()
+    all_players = Player.objects.filter(is_visible=True)
     serializer = PlayerSerializer(all_players, many=True)
     return JsonResponse(serializer.data, safe=False)
 
