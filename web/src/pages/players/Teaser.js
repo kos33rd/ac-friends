@@ -3,8 +3,12 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 
-import villager from '~/assets/villager.png'
+import villager1 from '~/assets/villager1.png'
+import villager2 from '~/assets/villager2.png'
 import textBubble from '~/assets/textBubble.svg'
+
+const villagers = [villager1, villager2]
+const villager = villagers[Math.floor(Math.random() * villagers.length)];
 
 const useStyles = makeStyles((theme) => ({
   container: {
