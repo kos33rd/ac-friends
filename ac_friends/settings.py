@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+
+def get_env_value(env_variable, fallback):
+    try:
+        return os.environ[env_variable]
+    except KeyError:
+        return fallback
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'yvbny6$o6hsz4vj84wt145vx*$^o5n!@7s0)k!0t*-oe-__mgo'
+SECRET_KEY = get_env_value('SECRET_KEY', 'yvbny6$o6hsz4vj84wt145vx*$^o5n!@7s0)k!0t*-oe-__mgo')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -136,8 +144,10 @@ AUTHENTICATION_BACKENDS = (
 DRFSO2_PROPRIETARY_BACKEND_NAME = 'Google'
 
 # Google oAuth2 configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '810585960469-6t1dll32bf956ib0ia1q34kvncrr0m98.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Z-pUb4AqdiFz15rPLlUEmINb'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = get_env_value('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', '810585960469-6t1dll32bf956ib0ia1q34kvncrr0m98.apps.googleusercontent.com')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = get_env_value('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', 'Z-pUb4AqdiFz15rPLlUEmINb')
+
+print('Initialized with SOCIAL_AUTH_GOOGLE_OAUTH2_KEY:', SOCIAL_AUTH_GOOGLE_OAUTH2_KEY)
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
@@ -188,4 +198,4 @@ REST_FRAMEWORK = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/api/static/'

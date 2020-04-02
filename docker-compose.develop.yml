@@ -9,6 +9,9 @@ services:
       - 8002:8000
     environment:
       PRODUCTION: 'false'
+      SECRET_KEY: 'REPLACE WITH A VALUE'
+      SOCIAL_AUTH_GOOGLE_OAUTH2_KEY: 'REPLACE WITH A VALUE'
+      SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET: 'REPLACE WITH A VALUE'
 
   web:
     ports:

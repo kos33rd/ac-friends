@@ -4,6 +4,9 @@ services:
   api:
     environment:
       PRODUCTION: 'true'
+      SECRET_KEY: 'REPLACE WITH A VALUE'
+      SOCIAL_AUTH_GOOGLE_OAUTH2_KEY: 'REPLACE WITH A VALUE'
+      SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET: 'REPLACE WITH A VALUE'
 
   web:
     build:

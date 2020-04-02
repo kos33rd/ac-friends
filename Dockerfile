@@ -6,6 +6,10 @@ FROM python:3.8-buster
 ENV PYTHONUNBUFFERED 1
 ENV ENVIRONMENT production
 
+ENV SECRET_KEY 'Do not edit this key in Dockerfile, you bloody monkey! Go for appropriate docker-compose'
+ENV SOCIAL_AUTH_GOOGLE_OAUTH2_KEY 'Do not edit this key in Dockerfile, you bloody monkey! Go for appropriate docker-compose'
+ENV SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET 'Do not edit this key in Dockerfile, you bloody monkey! Go for appropriate docker-compose'
+
 # Install system dependencies
 RUN printf "\ndeb http://httpredir.debian.org/debian buster main non-free contrib \
     \ndeb-src http://httpredir.debian.org/debian buster main non-free contrib" > \
