@@ -18,13 +18,12 @@ RUN printf "\ndeb http://httpredir.debian.org/debian buster main non-free contri
     && apt-get build-dep -yq python3-psycopg2
 RUN pip install pipenv
 
+# Install python dependencies
+COPY Pipfile* /app/
+WORKDIR /app
+RUN pipenv install --system --deploy
+
 # Copy project files
 COPY . /app
-
-# Set work directory
-WORKDIR /app
-
-# Install python dependencies
-RUN pipenv install --system --deploy
 
 CMD ["/app/run.sh"]
