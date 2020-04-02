@@ -8,15 +8,14 @@ RUN node -v
 RUN npm i -g pm2
 
 # Build application
-WORKDIR /app
-
-COPY ./package*.json ./
-COPY . .
-
 RUN echo "Building in production: $PRODUCTION"
 RUN echo "Backend URL: $BACKEND_URL"
 
+COPY ./package*.json /app/
+WORKDIR /app
 RUN npm ci
+
+COPY . .
 RUN npm run build-prod
 
 # Run static files server

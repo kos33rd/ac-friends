@@ -9,7 +9,7 @@ services:
       - 8002:8000
     environment:
       PRODUCTION: 'false'
-      SECRET_KEY: 'yvbny6$o6hsz4vj84wt145vx*$^o5n!@7s0)k!0t*-oe-__mgo'
+      SECRET_KEY: 'yvbny6$$o6hsz4vj84wt145vx*$$^o5n!@7s0)k!0t*-oe-__mgo'
       SOCIAL_AUTH_GOOGLE_OAUTH2_KEY: '810585960469-6t1dll32bf956ib0ia1q34kvncrr0m98.apps.googleusercontent.com'
       SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET: 'Z-pUb4AqdiFz15rPLlUEmINb'
 
