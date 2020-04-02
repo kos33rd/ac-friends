@@ -9,6 +9,9 @@ WORKDIR /app
 
 COPY ./package*.json ./
 COPY . .
+
+ARG BACKEND_URL
+ARG PRODUCTION
 RUN npm ci
 RUN npm run build-prod
 
