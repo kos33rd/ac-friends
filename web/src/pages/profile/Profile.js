@@ -139,10 +139,6 @@ const Profile = () => {
           )}
         />
       </Paper>
-      <pre>
-        {JSON.stringify(profile, null, 2)}
-        </pre>
-
     </React.Fragment>
   )
 }
