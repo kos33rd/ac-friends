@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+
+  api:
+    environment:
+      PRODUCTION: 'true'
+
+  web:
+    environment:
+      PRODUCTION: 'true'
+
+  nginx:
+    ports:
+      - 8080:8080
+
+volumes:
+  postgres_data:

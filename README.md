@@ -9,9 +9,14 @@ This app is being made with educational purposes in mind.
 * Pull the repo
 * Install `pipenv` and docker runtime
 * Open project root directory
-* Run `docker-compose up -d --build` to start database container
+* Run `docker-compose -f docker-compose.yml -f docker-compose.develop.yml up -d --build` to start database container
 * Run `pipenv update`
 * Run `pipenv run python manage.py createsuperuser` to create admin panel superuser
+
+
+# Production
+
+* Run `docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d --build`
 
 
 ## Backend tech stack
