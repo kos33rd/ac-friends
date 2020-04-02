@@ -12,6 +12,8 @@ This app is being made with educational purposes in mind.
 * Run `docker-compose -f docker-compose.yml -f docker-compose.develop.yml up -d --build` to start database container
 * Run `pipenv update`
 * Run `pipenv run python manage.py createsuperuser` to create admin panel superuser
+* Set up a [new OAuth application](https://github.com/RealmTeam/django-rest-framework-social-oauth2#setting-up-a-new-application)
+* Place `client_id` and `client_secret` of created application in your `docker-compose.develop.yml`
 
 ### Backend tech stack
 
@@ -33,7 +35,10 @@ This app is being made with educational purposes in mind.
 ## Production
 
 * Run `docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d --build`
-
+* Create a superuser: `sudo docker exec -it {container_id} python manage.py createsuperuser`
+* Set up a [new OAuth application](https://github.com/RealmTeam/django-rest-framework-social-oauth2#setting-up-a-new-application)
+* Place `client_id` and `client_secret` of created application in your `docker-compose.production.yml`
+* Restart your containers to apply configuration
 
 ## Deployed Application Instance
  
