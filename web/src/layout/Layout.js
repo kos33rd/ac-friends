@@ -11,7 +11,7 @@ const useLayoutStyles = makeStyles((theme) => ({
     maxWidth: 1280,
     margin: '0 auto 48px',
     padding: '0 24px',
-  }
+  },
 }))
 
 const theme = createMuiTheme({
@@ -27,6 +27,19 @@ const theme = createMuiTheme({
       default: '#E4E4E4'
     }
   },
+  typography: {
+    h2: {
+      fontWeight: 800,
+      letterSpacing: '0.01735em',
+      fontFamily: 'Lato, Roboto, Arial',
+    },
+    h4: {
+      fontWeight: 800,
+      letterSpacing: '0.03735em',
+      color: '#6d5e49',
+      fontFamily: 'Lato, Roboto, Arial',
+    },
+  }
 })
 
 export const Layout = ({ children }) => {

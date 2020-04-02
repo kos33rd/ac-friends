@@ -108,6 +108,10 @@ const config = {
             attributes: { rel: 'stylesheet' }
           },
           {
+            path: 'https://fonts.googleapis.com/css?family=Lato:500,800&display=swap',
+            attributes: { rel: 'stylesheet' }
+          },
+          {
             path: 'https://fonts.googleapis.com/icon?family=Material+Icons',
             attributes: { rel: 'stylesheet' }
           }

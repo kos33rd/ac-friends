@@ -1,6 +1,6 @@
 import { createStore, createApi } from 'effector'
 
-const profile = createStore({})
+const profile = createStore({ isLoaded: false })
 
 export const { profileIsLoading, profileLoaded, profileLoadFailed } = createApi(profile, {
   profileIsLoading: (state) => ({ ...state, isLoaded: false }),

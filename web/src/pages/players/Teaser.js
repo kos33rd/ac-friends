@@ -6,6 +6,9 @@ import Grid from '@material-ui/core/Grid'
 import villager1 from '~/assets/villager1.png'
 import villager2 from '~/assets/villager2.png'
 import textBubble from '~/assets/textBubble.svg'
+import { useStore } from 'effector-react'
+import profileStore from '~/data/stores/profile'
+import { CircularProgress } from '@material-ui/core'
 
 const villagers = [villager1, villager2]
 const villager = villagers[Math.floor(Math.random() * villagers.length)];
@@ -37,9 +40,6 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
     padding: '80px 40px',
-    [theme.breakpoints.down('md')]: {
-      padding: '70px 40px',
-    },
     [theme.breakpoints.down('sm')]: {
       padding: '50px 40px',
     },
@@ -54,8 +54,34 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     width: '100%',
     marginTop: '20px',
+  },
+
+  username: {
+    color: '#25a417'
   }
 }))
+
+
+const Username = ({ username }) => {
+  const classes = useStyles()
+
+  return <span className={classes.username} >
+    {username}
+  </span>
+}
+const WelcomeText = () => {
+  const profile = useStore(profileStore)
+
+  if (!profile.isLoaded) {
+    return <CircularProgress size={64}/>
+  }
+
+  return (
+    <Typography variant='h2' component='h4'>
+      Welcome,  <Username username={profile.nickname || 'villager'} /> 🌻
+    </Typography>
+  )
+}
 
 export const Teaser = () => {
   const classes = useStyles()
@@ -65,7 +91,7 @@ export const Teaser = () => {
       <Grid container>
 
         <Grid item xs={8}>
-          <Typography variant='h2' component='h4'>Welcome, villager 🌻</Typography>
+          <WelcomeText />
           <div className={classes.banner}>
             <img src={textBubble} className={classes.textBubble} />
             <div className={classes.text}>
