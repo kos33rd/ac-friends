@@ -12,7 +12,7 @@ RUN npm i -g pm2
 
 COPY ./package*.json /app/
 WORKDIR /app
-RUN npm ci
+RUN npm ci --unsafe-perm
 
 # Build application
 RUN echo "Building in production: $PRODUCTION"
