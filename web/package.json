@@ -15,10 +15,13 @@
     "axios": "^0.19.2",
     "effector": "^20.13.4",
     "effector-react": "^20.6.3",
+    "final-form": "^4.19.1",
+    "final-form-material-ui": "^0.3.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-final-form": "^6.4.0",
     "react-google-login": "^5.1.2",
     "react-hot-loader": "^4.12.20",
     "react-router-dom": "^5.1.2"
