@@ -1,5 +1,4 @@
 import api from './api';
-import { API_CLIENT_ID, API_CLIENT_SECRET } from './constants'
 
 export const authorizeWithGoogle = (profileResponse) => {
   console.log('Authorization provider client profile:', profileResponse);

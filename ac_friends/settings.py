@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 
-def get_env_value(env_variable, fallback):
+def get_env_value(env_variable, fallback=None):
     try:
         return os.environ[env_variable]
     except KeyError:
@@ -144,8 +144,8 @@ AUTHENTICATION_BACKENDS = (
 DRFSO2_PROPRIETARY_BACKEND_NAME = 'Google'
 
 # Google oAuth2 configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = get_env_value('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', '810585960469-6t1dll32bf956ib0ia1q34kvncrr0m98.apps.googleusercontent.com')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = get_env_value('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', 'Z-pUb4AqdiFz15rPLlUEmINb')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = get_env_value('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = get_env_value('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
 print('Initialized with SOCIAL_AUTH_GOOGLE_OAUTH2_KEY:', SOCIAL_AUTH_GOOGLE_OAUTH2_KEY)
 
