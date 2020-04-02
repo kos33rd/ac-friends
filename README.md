@@ -4,7 +4,7 @@ Helps you find a friend to play with.
 This app is being made with educational purposes in mind.
 
 
-# Development
+## Development
 
 * Pull the repo
 * Install `pipenv` and docker runtime
@@ -13,13 +13,7 @@ This app is being made with educational purposes in mind.
 * Run `pipenv update`
 * Run `pipenv run python manage.py createsuperuser` to create admin panel superuser
 
-
-# Production
-
-* Run `docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d --build`
-
-
-## Backend tech stack
+### Backend tech stack
 
 * Python 3.8
 * Django 3
@@ -28,9 +22,19 @@ This app is being made with educational purposes in mind.
 * PostgreSQL
 * Docker
 
-## Frontend tech stack
+### Frontend tech stack
 
 * Webpack
 * Babel
 * React + Effector
 * Material UI
+
+
+## Production
+
+* Run `docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d --build`
+
+
+## Deployed Application Instance
+ 
+http://animal-crossing-new-friends.app/

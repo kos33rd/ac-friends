@@ -6,9 +6,10 @@ services:
       PRODUCTION: 'true'
 
   web:
-    environment:
-      PRODUCTION: 'true'
-      BACKEND_URL: '/api/'
+    build:
+      args:
+        PRODUCTION: 'true'
+        BACKEND_URL: '/api/'
 
   nginx:
     ports:

@@ -13,9 +13,10 @@ services:
   web:
     ports:
       - 8001:8000
-    environment:
-      PRODUCTION: 'false'
-      BACKEND_URL: '//localhost:8000/'
+    build:
+      args:
+        PRODUCTION: 'false'
+        BACKEND_URL: '//localhost:8000/'
 
   nginx:
     ports:

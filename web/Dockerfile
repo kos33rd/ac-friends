@@ -1,5 +1,8 @@
 FROM node:12
 
+ARG BACKEND_URL
+ARG PRODUCTION
+
 # Check apps and deps
 RUN node -v
 RUN npm i -g pm2
@@ -10,8 +13,9 @@ WORKDIR /app
 COPY ./package*.json ./
 COPY . .
 
-ARG BACKEND_URL
-ARG PRODUCTION
+RUN echo "Building in production: $PRODUCTION"
+RUN echo "Backend URL: $BACKEND_URL"
+
 RUN npm ci
 RUN npm run build-prod
 
