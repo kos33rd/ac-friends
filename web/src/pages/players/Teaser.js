@@ -68,11 +68,11 @@ export const Teaser = () => {
           <Typography variant='h2' component='h4'>Welcome, villager 🌻</Typography>
           <div className={classes.banner}>
             <img src={textBubble} className={classes.textBubble} />
-            <p className={classes.text}>
+            <div className={classes.text}>
               <Typography variant='h4' component='h2'>
                 Here you can find a friends to play Animal Crossing online with.
               </Typography>
-            </p>
+            </div>
           </div>
         </Grid>
 

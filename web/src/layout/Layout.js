@@ -9,7 +9,7 @@ import { Footer } from './Footer'
 const useLayoutStyles = makeStyles((theme) => ({
   main: {
     maxWidth: 1280,
-    margin: '0 auto',
+    margin: '0 auto 48px',
     padding: '0 24px',
   }
 }))

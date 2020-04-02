@@ -6,10 +6,9 @@ import GroupIcon from '@material-ui/icons/Group'
 import { makeStyles } from '@material-ui/core/styles'
 import { GoogleLogin } from 'react-google-login'
 import { IconButton } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
-import { authorizeWithGoogle } from '../data/authorizeWithGoogle'
-import api from '../data/api'
-import { loadProfile } from '../data/stores/profile'
+import { ProfileButton } from '~/layout/components/ProfileButton'
 
 const useStyles = makeStyles((theme) => ({
   toolbarWrapper: {
@@ -30,30 +29,19 @@ const useStyles = makeStyles((theme) => ({
 
 export const Header = () => {
   const classes = useStyles();
-
-  const handleAuthSuccess = (...args) => authorizeWithGoogle(...args)
-    .then(() =>
-      api.get('profile')
-        .then(res => loadProfile(res.data))
-        .catch(err => console.error('Error fetching user profile', err))
-    )
+  const history = useHistory()
+  const navigateToPlayersList = () => history.push('/')
 
   return (
     <AppBar position="relative">
       <Toolbar className={classes.toolbar}>
-        <IconButton className={classes.icon} color='secondary'>
+        <IconButton className={classes.icon} color='secondary' onClick={navigateToPlayersList}>
           <GroupIcon />
         </IconButton>
         <Typography variant="h6" color="inherit" noWrap className={classes.title}>
           Animal Crossing: New Friends
         </Typography>
-        <GoogleLogin
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Join us with Google"
-          onSuccess={handleAuthSuccess}
-          onFailure={handleAuthSuccess}
-          cookiePolicy={'single_host_origin'}
-        />
+        <ProfileButton />
       </Toolbar>
     </AppBar>
   )
