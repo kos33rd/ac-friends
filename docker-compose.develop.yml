@@ -16,7 +16,7 @@ services:
     build:
       args:
         PRODUCTION: 'false'
-        BACKEND_URL: '//localhost:8000/'
+        BACKEND_URL: '//localhost:8000/api/'
 
   nginx:
     ports:

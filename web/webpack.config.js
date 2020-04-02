@@ -114,7 +114,7 @@ const config = {
       }),
       new webpack.DefinePlugin({
         PRODUCTION: JSON.stringify(process.env.PRODUCTION || ''),
-        BACKEND_URL: JSON.stringify(process.env.BACKEND_URL || '//localhost:8000/'),
+        BACKEND_URL: JSON.stringify(process.env.BACKEND_URL || '//localhost:8000/api/'),
       })
     ]
   }
