@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { includes } from 'lodash'
 
-const baseURL = process.env === 'production' ? '/api' : 'http://127.0.0.1:8000'
+// noinspection JSUnresolvedVariable
+const baseURL = BACKEND_URL
 const AUTH_CHECK_METHODS = ['post', 'put', 'patch', 'delete', 'get']
 
 const api = axios.create({
