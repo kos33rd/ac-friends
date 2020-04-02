@@ -55,4 +55,13 @@ urlpatterns = [
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
     path('players/', players_list),
     path('profile/', profile),
+
+    # Public URLs list (production mode)
+    # FIXME: Unify public and dev routes
+    path('api/secret-admin-url/', admin.site.urls),
+    url(r'^api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/auth/', include('rest_framework_social_oauth2.urls')),
+    path('api/players/', players_list),
+    path('api/profile/', profile),
+
 ]
