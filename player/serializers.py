@@ -1,6 +1,16 @@
 from rest_framework import serializers
 
-from .models import Player
+from .models import Player, Fruit
+
+
+class FruitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Fruit
+        fields = [
+            'id',
+            'name',
+            'icon',
+        ]
 
 
 class PlayerSerializer(serializers.ModelSerializer):
@@ -16,4 +26,5 @@ class PlayerSerializer(serializers.ModelSerializer):
             'bump_date',
             'commentary',
             'avatar_url',
+            'fruits'
         ]

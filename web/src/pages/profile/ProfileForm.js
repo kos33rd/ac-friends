@@ -64,6 +64,7 @@ export const ProfileForm = () => {
     'nintendo_id',
     'language',
     'commentary',
+    'fruits',
   ])
 
   return (

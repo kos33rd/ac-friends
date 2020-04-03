@@ -4,12 +4,12 @@ from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 
-from .models import Player
-from .serializers import PlayerSerializer
+from .models import Player, Fruit
+from .serializers import PlayerSerializer, FruitSerializer
 
 
 @api_view(["GET"])
-def players_list(request):
+def players_list(response):
     all_players = Player.objects.filter(is_visible=True)
     serializer = PlayerSerializer(all_players, many=True)
     return JsonResponse(serializer.data, safe=False)
@@ -30,3 +30,10 @@ def profile(request):
             serializer.save()
             return JsonResponse({})
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET"])
+def fruits(response):
+    all_fruits = Fruit.objects.all()
+    serializer = FruitSerializer(all_fruits, many=True)
+    return JsonResponse(serializer.data, safe=False)
