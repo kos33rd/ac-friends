@@ -1,70 +1,53 @@
 import React from 'react'
 import { useStore } from 'effector-react'
-import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { CircularProgress } from '@material-ui/core'
-import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
-import Button from '@material-ui/core/Button'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import IconButton from '@material-ui/core/IconButton'
 
-import { ProfileForm } from '~/pages/profile/ProfileForm'
-import { $profile, $profileIsLoading } from '~/data/stores/profile'
+import { $profileIsLoading } from '~/data/stores/profile'
+import { ProfilePaper } from '~/pages/profile/ProfilePaper'
+import timmy_nook from '~/assets/timmy_nook.png'
+import tommy_nook from '~/assets/tommy_nook.png'
 
 const useStyles = makeStyles((theme) => ({
-  formPaper: {
-    margin: '64px auto',
-    padding: 32,
-    maxWidth: 640,
+  page: {
+    position: 'relative',
   },
-  divider: {
-    margin: '6px 0',
+  rightBackdrop: {
+    position: 'absolute',
+    left: 'calc(65%)',
+    zIndex: '-1',
+    transform: 'rotate(35deg)',
+    height: 600,
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
-  profile: {
-    display: 'flex',
+  leftBackdrop: {
+    position: 'absolute',
+    right: 'calc(65%)',
+    zIndex: '-1',
+    transform: 'rotate(-35deg)',
+    height: 600,
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
-  profileText: {
-    flex: '1',
-  },
-  bumpIcon: {},
 }))
 
 const Profile = () => {
   const classes = useStyles()
   const profileIsLoading = useStore($profileIsLoading)
 
-  const onBumpClick = () => console.log('Profile bumped up')
-
   if (profileIsLoading) {
     return <CircularProgress />
   }
 
   return (
-    <React.Fragment>
-      <Paper elevation={3} className={classes.formPaper}>
-        <div className={classes.profile}>
-          <Typography variant='h3' className={classes.profileText}>
-            My profile
-          </Typography>
-
-          <Button
-            className={classes.bumpIcon}
-            color='default'
-            onClick={onBumpClick}
-          >
-            Bump me up
-          </Button>
-        </div>
-
-        <Divider className={classes.divider} />
-
-        <Typography variant='subtitle1'>
-          While visibility toggle is switched off, no one can see you
-        </Typography>
-        <ProfileForm />
-      </Paper>
-    </React.Fragment>
+    <div className={classes.page}>
+      <img src={timmy_nook} className={classes.rightBackdrop} />
+      <img src={tommy_nook} className={classes.leftBackdrop} />
+      <ProfilePaper />
+    </div>
   )
 }
 
