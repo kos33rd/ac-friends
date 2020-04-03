@@ -133,7 +133,7 @@ export const ProfileForm = () => {
               name='commentary'
               component={TextField}
               parse={identity}
-              label='A message for other players'
+              label='A short message for other players'
               className={classes.field}
               InputLabelProps={{
                 shrink: true,
