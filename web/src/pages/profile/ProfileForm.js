@@ -13,6 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import { $profile, updateProfile } from '~/data/stores/profile'
 import { PaddedAlert } from '~/pages/profile/components/PaddedAlert'
 import { CountrySelect } from '~/pages/profile/components/CountrySelect'
+import { FruitsSelect } from '~/pages/profile/components/FruitsSelect'
 
 const useStyles = makeStyles((theme) => ({
   formPaper: {
@@ -69,7 +70,7 @@ export const ProfileForm = () => {
     <Form
       onSubmit={onProfileSubmit}
       initialValues={initialValues}
-      render={({ handleSubmit, submitError, submitting, submitSucceeded }) => (
+      render={({ handleSubmit, submitError, submitting, submitSucceeded, values }) => (
         <form onSubmit={handleSubmit} className={classes.form}>
           <FormControlLabel
             control={
@@ -117,10 +118,21 @@ export const ProfileForm = () => {
               }}
             />
             <Field
+              name='fruits'
+              component={FruitsSelect}
+              label='I have this fruits on my island'
+              className={classes.field}
+              variant='outlined'
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+
+            <Field
               name='commentary'
               component={TextField}
               parse={identity}
-              label='Free text visible to other players'
+              label='A message for other players'
               className={classes.field}
               InputLabelProps={{
                 shrink: true,
