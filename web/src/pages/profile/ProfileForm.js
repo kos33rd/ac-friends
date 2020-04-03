@@ -79,7 +79,7 @@ export const ProfileForm = () => {
                 color='primary'
               />
             }
-            label='Show my profile in players list on main page'
+            label='Show my profile in public players list on main page'
             className={classes.field}
           />
           <div className={classes.fieldsGroup}>
