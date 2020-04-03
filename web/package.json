@@ -7,7 +7,8 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
-    "start": "webpack-dev-server --hot --mode development"
+    "start": "webpack-dev-server --hot --mode development",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@material-ui/core": "^4.9.8",
@@ -44,13 +45,13 @@
     "lodash-webpack-plugin": "^0.11.5",
     "pm2": "^4.2.3",
     "postcss-loader": "^3.0.0",
-    "prettier": "^2.0.2",
+    "sharp": "0.23.0",
     "style-loader": "^1.1.3",
     "url-loader": "^4.0.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
-    "sharp": "0.23.0"
+    "prettier": "^2.0.2"
   },
   "repository": {
     "type": "git",

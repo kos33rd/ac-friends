@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 import { includes } from 'lodash'
 
 // noinspection JSUnresolvedVariable
@@ -7,12 +7,11 @@ const AUTH_CHECK_METHODS = ['post', 'put', 'patch', 'delete', 'get']
 
 const api = axios.create({
   baseURL,
-  withCredentials: true
+  withCredentials: true,
 })
 
 api.interceptors.request.use(
   (config) => {
-
     if (includes(AUTH_CHECK_METHODS, config.method)) {
       const accessToken = localStorage.getItem('accessToken')
 
@@ -23,7 +22,7 @@ api.interceptors.request.use(
 
     return config
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )

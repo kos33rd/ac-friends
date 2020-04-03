@@ -1,10 +1,13 @@
 import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import {
+  createMuiTheme,
+  makeStyles,
+  ThemeProvider,
+} from '@material-ui/core/styles'
 
 import { Header } from './Header'
 import { Footer } from './Footer'
-
 
 const useLayoutStyles = makeStyles((theme) => ({
   main: {
@@ -15,17 +18,16 @@ const useLayoutStyles = makeStyles((theme) => ({
 }))
 
 const theme = createMuiTheme({
-
   palette: {
     primary: {
-      main: '#f7c539'
+      main: '#f7c539',
     },
     secondary: {
-      main: '#9a6033'
+      main: '#9a6033',
     },
     background: {
-      default: '#E4E4E4'
-    }
+      default: '#E4E4E4',
+    },
   },
   typography: {
     h2: {
@@ -39,7 +41,7 @@ const theme = createMuiTheme({
       color: '#6d5e49',
       fontFamily: 'Lato, Roboto, Arial',
     },
-  }
+  },
 })
 
 export const Layout = ({ children }) => {
@@ -48,9 +50,7 @@ export const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-        <main className={classes.main}>
-          {children}
-        </main>
+      <main className={classes.main}>{children}</main>
       <Footer />
     </ThemeProvider>
   )

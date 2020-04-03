@@ -1,8 +1,11 @@
 import * as React from 'react'
 import Switch from '@material-ui/core/Switch'
 
-
-const SwitchWrapper = ({ input: { checked, name, onChange, ...restInput }, meta, ...rest }) => (
+const SwitchWrapper = ({
+  input: { checked, name, onChange, ...restInput },
+  meta,
+  ...rest
+}) => (
   <Switch
     {...rest}
     name={name}

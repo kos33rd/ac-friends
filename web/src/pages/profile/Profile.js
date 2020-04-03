@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button'
 import { ProfileForm } from '~/pages/profile/ProfileForm'
 import { $profile, $profileIsLoading } from '~/data/stores/profile'
 
-
 const useStyles = makeStyles((theme) => ({
   formPaper: {
     margin: '64px auto',
@@ -26,14 +25,10 @@ const useStyles = makeStyles((theme) => ({
   profileText: {
     flex: '1',
   },
-  bumpIcon: {
-
-  }
+  bumpIcon: {},
 }))
 
-
 const Profile = () => {
-
   const classes = useStyles()
   const profileIsLoading = useStore($profileIsLoading)
 
@@ -45,7 +40,6 @@ const Profile = () => {
 
   return (
     <React.Fragment>
-
       <Paper elevation={3} className={classes.formPaper}>
         <div className={classes.profile}>
           <Typography variant='h3' className={classes.profileText}>
@@ -66,7 +60,7 @@ const Profile = () => {
         <Typography variant='subtitle1'>
           While visibility toggle is switched off, no one can see you
         </Typography>
-        <ProfileForm/>
+        <ProfileForm />
       </Paper>
     </React.Fragment>
   )

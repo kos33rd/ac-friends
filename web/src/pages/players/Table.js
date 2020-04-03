@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import React, { useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
 import { useStore } from 'effector-react'
 
 import playersStore, { fetchPlayers } from '~/data/stores/players'
@@ -15,10 +15,10 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-});
+})
 
 export default function PlayersTable() {
-  const classes = useStyles();
+  const classes = useStyles()
   const { list } = useStore(playersStore)
   useEffect(() => {
     fetchPlayers()
@@ -26,11 +26,11 @@ export default function PlayersTable() {
 
   return (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table className={classes.table} aria-label='simple table'>
         <TableHead>
           <TableRow>
             <TableCell>Player Nickname</TableCell>
-            <TableCell >Nintendo ID</TableCell>
+            <TableCell>Nintendo ID</TableCell>
             <TableCell>Language</TableCell>
             <TableCell>Registered</TableCell>
           </TableRow>
@@ -38,7 +38,7 @@ export default function PlayersTable() {
         <TableBody>
           {list.map((player) => (
             <TableRow key={player.id}>
-              <TableCell component="th" scope="row">
+              <TableCell component='th' scope='row'>
                 {player.nickname}
               </TableCell>
               <TableCell>{player.nintendo_id}</TableCell>
@@ -49,5 +49,5 @@ export default function PlayersTable() {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }

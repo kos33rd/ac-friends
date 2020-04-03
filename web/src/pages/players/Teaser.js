@@ -10,9 +10,8 @@ import villager2 from '~/assets/villager2.png'
 import textBubble from '~/assets/textBubble.svg'
 import { $profile, $profileIsLoading } from '~/data/stores/profile'
 
-
 const villagers = [villager1, villager2]
-const villager = villagers[Math.floor(Math.random() * villagers.length)];
+const villager = villagers[Math.floor(Math.random() * villagers.length)]
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -58,29 +57,26 @@ const useStyles = makeStyles((theme) => ({
   },
 
   username: {
-    color: '#25a417'
-  }
+    color: '#25a417',
+  },
 }))
-
 
 const Username = ({ username }) => {
   const classes = useStyles()
 
-  return <span className={classes.username} >
-    {username}
-  </span>
+  return <span className={classes.username}>{username}</span>
 }
 const WelcomeText = () => {
   const profile = useStore($profile)
   const profileIsLoading = useStore($profileIsLoading)
 
   if (profileIsLoading) {
-    return <CircularProgress size={64}/>
+    return <CircularProgress size={64} />
   }
 
   return (
     <Typography variant='h2' component='h4'>
-      Welcome,  <Username username={profile.nickname || 'villager'} /> 🌻
+      Welcome, <Username username={profile.nickname || 'villager'} /> 🌻
     </Typography>
   )
 }
@@ -91,7 +87,6 @@ export const Teaser = () => {
   return (
     <div className={classes.container}>
       <Grid container>
-
         <Grid item xs={8}>
           <WelcomeText />
           <div className={classes.banner}>
@@ -107,7 +102,6 @@ export const Teaser = () => {
         <Grid item xs={4}>
           <div className={classes.villagerImage} />
         </Grid>
-
       </Grid>
     </div>
   )

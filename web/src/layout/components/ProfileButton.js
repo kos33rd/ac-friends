@@ -9,18 +9,20 @@ import Button from '@material-ui/core/Button'
 import { authorizeWithGoogle } from '~/data/authorizeWithGoogle'
 import { $isAuthorized, $profile, fetchProfile } from '~/data/stores/profile'
 
-
 const GoToProfileButton = () => {
   const history = useHistory()
   const navigateToProfile = () => history.push('/profile')
 
   return (
-    <Button color='secondary' startIcon={<FaceIcon/>} onClick={navigateToProfile}>
+    <Button
+      color='secondary'
+      startIcon={<FaceIcon />}
+      onClick={navigateToProfile}
+    >
       My Profile
     </Button>
   )
 }
-
 
 export const ProfileButton = () => {
   useEffect(() => {
@@ -30,19 +32,22 @@ export const ProfileButton = () => {
   const isAuthorized = useStore($isAuthorized)
   const profileIsLoaded = !useStore(fetchProfile.pending)
 
-  const handleAuthSuccess = (...args) => authorizeWithGoogle(...args).then(fetchProfile)
+  const handleAuthSuccess = (...args) =>
+    authorizeWithGoogle(...args).then(fetchProfile)
 
-  return (
-    profileIsLoaded
-    ? isAuthorized
-      ? <GoToProfileButton />
-      : <GoogleLogin
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Join us with Google"
-          onSuccess={handleAuthSuccess}
-          onFailure={handleAuthSuccess}
-          cookiePolicy={'single_host_origin'}
-        />
-    : <CircularProgress />
+  return profileIsLoaded ? (
+    isAuthorized ? (
+      <GoToProfileButton />
+    ) : (
+      <GoogleLogin
+        clientId={GOOGLE_CLIENT_ID}
+        buttonText='Join us with Google'
+        onSuccess={handleAuthSuccess}
+        onFailure={handleAuthSuccess}
+        cookiePolicy={'single_host_origin'}
+      />
+    )
+  ) : (
+    <CircularProgress />
   )
 }
