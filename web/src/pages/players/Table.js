@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useStore } from 'effector-react'
 
-import playersStore from '~/data/stores/players'
+import playersStore, { fetchPlayers } from '~/data/stores/players'
 
 const useStyles = makeStyles({
   table: {
@@ -19,7 +19,10 @@ const useStyles = makeStyles({
 
 export default function PlayersTable() {
   const classes = useStyles();
-  const players = useStore(playersStore)
+  const { list } = useStore(playersStore)
+  useEffect(() => {
+    fetchPlayers()
+  }, [])
 
   return (
     <TableContainer component={Paper}>
@@ -33,7 +36,7 @@ export default function PlayersTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {players.map((player) => (
+          {list.map((player) => (
             <TableRow key={player.id}>
               <TableCell component="th" scope="row">
                 {player.nickname}

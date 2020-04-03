@@ -4,11 +4,10 @@ import { GoogleLogin } from 'react-google-login'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import FaceIcon from '@material-ui/icons/Face'
 import { useHistory } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 import { authorizeWithGoogle } from '~/data/authorizeWithGoogle'
-import profileStore, { profileIsLoading, profileLoaded, profileLoadFailed } from '~/data/stores/profile'
-import api from '~/data/api'
-import Button from '@material-ui/core/Button'
+import profileStore, { fetchProfile } from '~/data/stores/profile'
 
 
 const GoToProfileButton = () => {
@@ -25,21 +24,13 @@ const GoToProfileButton = () => {
 
 export const ProfileButton = () => {
   useEffect(() => {
-    profileIsLoading()
-    api.get('profile')
-      .then(res => profileLoaded(res.data))
-      .catch(err => profileLoadFailed(err))
+    fetchProfile()
   }, [])
 
   const profile = useStore(profileStore)
 
   const handleAuthSuccess = (...args) => authorizeWithGoogle(...args)
-    .then(() => {
-      profileIsLoading()
-      return api.get('profile')
-        .then(res => profileLoaded(res.data))
-        .catch(err => profileLoadFailed(err))
-    })
+    .then(fetchProfile)
 
   return (
     profile.isLoading
