@@ -35,16 +35,28 @@ const useStyles = makeStyles((theme) => ({
     padding: '60px',
   },
 
-  text: {
+  bubbleTextWrap: {
     position: 'absolute',
     top: 0,
     left: 0,
-    padding: '80px 40px',
+    padding: '90px 40px 0',
     [theme.breakpoints.down('sm')]: {
-      padding: '50px 40px',
+      padding: '70px 40px 0',
     },
     [theme.breakpoints.down('xs')]: {
-      padding: '30px 40px',
+      padding: '40px 40px 0',
+    },
+  },
+
+  bubbleText: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.9rem',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.5rem',
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1rem',
     },
   },
 
@@ -91,8 +103,8 @@ export const Teaser = () => {
           <WelcomeText />
           <div className={classes.banner}>
             <img src={textBubble} className={classes.textBubble} />
-            <div className={classes.text}>
-              <Typography variant='h4' component='h2'>
+            <div className={classes.bubbleTextWrap}>
+              <Typography variant='h4' component='h2' className={classes.bubbleText}>
                 Here you can find a friends to play Animal Crossing online with.
               </Typography>
             </div>

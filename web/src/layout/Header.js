@@ -4,11 +4,11 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import GroupIcon from '@material-ui/icons/Group'
 import { makeStyles } from '@material-ui/core/styles'
-import { GoogleLogin } from 'react-google-login'
 import { IconButton } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link as RouterLink } from 'react-router-dom'
 
 import { ProfileButton } from '~/layout/components/ProfileButton'
+import Link from '@material-ui/core/Link'
 
 const useStyles = makeStyles((theme) => ({
   toolbarWrapper: {
@@ -48,7 +48,9 @@ export const Header = () => {
           noWrap
           className={classes.title}
         >
-          Animal Crossing: New Friends
+          <Link component={RouterLink} to="/" color='secondary'>
+            Animal Crossing: New Friends
+          </Link>
         </Typography>
         <ProfileButton />
       </Toolbar>

@@ -6,6 +6,8 @@ import { CircularProgress } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import IconButton from '@material-ui/core/IconButton'
 
 import { ProfileForm } from '~/pages/profile/ProfileForm'
 import { $profile, $profileIsLoading } from '~/data/stores/profile'
