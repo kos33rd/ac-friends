@@ -1,13 +1,15 @@
 import React from 'react'
 import { useStore } from 'effector-react'
-import profileStore from '~/data/stores/profile'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { CircularProgress } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
+
 import { ProfileForm } from '~/pages/profile/ProfileForm'
+import { $profile, $profileIsLoading } from '~/data/stores/profile'
+
 
 const useStyles = makeStyles((theme) => ({
   formPaper: {
@@ -33,10 +35,11 @@ const useStyles = makeStyles((theme) => ({
 const Profile = () => {
 
   const classes = useStyles()
-  const profile = useStore(profileStore)
+  const profileIsLoading = useStore($profileIsLoading)
+
   const onBumpClick = () => console.log('Profile bumped up')
 
-  if (!profile.isLoaded) {
+  if (profileIsLoading) {
     return <CircularProgress />
   }
 

@@ -2,13 +2,14 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+import { useStore } from 'effector-react'
+import { CircularProgress } from '@material-ui/core'
 
 import villager1 from '~/assets/villager1.png'
 import villager2 from '~/assets/villager2.png'
 import textBubble from '~/assets/textBubble.svg'
-import { useStore } from 'effector-react'
-import profileStore from '~/data/stores/profile'
-import { CircularProgress } from '@material-ui/core'
+import { $profile, $profileIsLoading } from '~/data/stores/profile'
+
 
 const villagers = [villager1, villager2]
 const villager = villagers[Math.floor(Math.random() * villagers.length)];
@@ -70,9 +71,10 @@ const Username = ({ username }) => {
   </span>
 }
 const WelcomeText = () => {
-  const profile = useStore(profileStore)
+  const profile = useStore($profile)
+  const profileIsLoading = useStore($profileIsLoading)
 
-  if (!profile.isLoaded) {
+  if (profileIsLoading) {
     return <CircularProgress size={64}/>
   }
 

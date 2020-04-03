@@ -108,7 +108,7 @@ const config = {
             attributes: { rel: 'stylesheet' }
           },
           {
-            path: 'https://fonts.googleapis.com/css?family=Lato:500,800&display=swap',
+            path: 'https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap',
             attributes: { rel: 'stylesheet' }
           },
           {

@@ -1,27 +1,38 @@
-import { createStore, createApi, createEffect } from 'effector'
+import { createStore, createEffect } from 'effector'
 import api from '~/data/api'
 
-const profile = createStore({ isLoaded: false })
 
-export const { setProfileIsLoading, setProfileLoaded, setProfileLoadFailed } = createApi(profile, {
-  setProfileIsLoading: (state) => ({ ...state, isLoaded: false }),
-  setProfileLoaded: (state, profile) => ({ ...profile, isAuthorized: true, isLoaded: true, error: false }),
-  setProfileLoadFailed: (state, error) => ({ ...state, isAuthorized: false, isLoaded: true, error }),
-})
-
+// Profile fetch
 export const fetchProfile = createEffect({
-  handler: () => {
-    setProfileIsLoading()
-    return api.get('profile').then(res => res.data)
-  },
+  handler: () => api.get('profile').then(res => res.data),
 })
 
-fetchProfile.done.watch(({ result }) => {
-  setProfileLoaded(result)
+export const $profile = createStore({})
+export const $profileLoadingError = createStore(false)
+export const $isAuthorized = createStore(false)
+export const $profileIsLoading = fetchProfile.pending
+
+$profileLoadingError.on(fetchProfile.fail, (store, err) => err)
+$profile.on(fetchProfile.done, (store, { result }) => result)
+$isAuthorized.on(fetchProfile.done, () => true)
+$isAuthorized.on(fetchProfile.fail, () => false)
+
+
+// Profile update
+export const updateProfile = createEffect({
+  handler: (profileData) => api.put('profile/', profileData).then(res => res.data),
 })
 
-fetchProfile.fail.watch(({ error }) => {
-  setProfileLoadFailed(error)
-})
+export const $profileUpdateError = createStore(false)
+export const $profileIsUpdated = createStore(false)
+export const $profileIsUpdating = updateProfile.pending
 
-export default profile
+$profileUpdateError.on(fetchProfile.fail, (store, err) => err)
+$profileIsUpdated.on(fetchProfile.done, () => true)
+$profileIsUpdated.on(fetchProfile.fail, () => false)
+
+
+// Profile bump (TBD)
+export const bumpProfile = createEffect({
+  handler: () => api.post('profile/bump', {}).then(res => res.data),
+})

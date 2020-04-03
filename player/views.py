@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
@@ -14,9 +15,18 @@ def players_list(request):
     return JsonResponse(serializer.data, safe=False)
 
 
-@api_view(["GET"])
+@api_view(["GET", "PUT"])
 @permission_classes([IsAuthenticated])
 def profile(request):
     user_profile = get_object_or_404(Player, user_id=request.user)
-    serializer = PlayerSerializer(user_profile, many=False)
-    return JsonResponse(serializer.data, safe=False)
+
+    if request.method == 'GET':
+        serializer = PlayerSerializer(user_profile, many=False)
+        return JsonResponse(serializer.data, safe=False)
+
+    if request.method == 'PUT':
+        serializer = PlayerSerializer(user_profile, many=False, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse({})
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

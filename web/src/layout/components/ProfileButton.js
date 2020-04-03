@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
 import { authorizeWithGoogle } from '~/data/authorizeWithGoogle'
-import profileStore, { fetchProfile } from '~/data/stores/profile'
+import { $isAuthorized, $profile, fetchProfile } from '~/data/stores/profile'
 
 
 const GoToProfileButton = () => {
@@ -27,15 +27,14 @@ export const ProfileButton = () => {
     fetchProfile()
   }, [])
 
-  const profile = useStore(profileStore)
+  const isAuthorized = useStore($isAuthorized)
+  const profileIsLoaded = !useStore(fetchProfile.pending)
 
-  const handleAuthSuccess = (...args) => authorizeWithGoogle(...args)
-    .then(fetchProfile)
+  const handleAuthSuccess = (...args) => authorizeWithGoogle(...args).then(fetchProfile)
 
   return (
-    profile.isLoading
-    ? <CircularProgress />
-    : profile.isAuthorized
+    profileIsLoaded
+    ? isAuthorized
       ? <GoToProfileButton />
       : <GoogleLogin
           clientId={GOOGLE_CLIENT_ID}
@@ -44,5 +43,6 @@ export const ProfileButton = () => {
           onFailure={handleAuthSuccess}
           cookiePolicy={'single_host_origin'}
         />
+    : <CircularProgress />
   )
 }
