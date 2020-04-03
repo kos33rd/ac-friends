@@ -12,6 +12,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { $profile, updateProfile } from '~/data/stores/profile'
 import { PaddedAlert } from '~/pages/profile/components/PaddedAlert'
+import { CountrySelect } from '~/pages/profile/components/CountrySelect'
 
 const useStyles = makeStyles((theme) => ({
   formPaper: {
@@ -107,8 +108,7 @@ export const ProfileForm = () => {
             />
             <Field
               name='language'
-              component={TextField}
-              parse={identity}
+              component={CountrySelect}
               label='Preferable language'
               className={classes.field}
               variant='outlined'

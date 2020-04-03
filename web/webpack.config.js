@@ -76,6 +76,7 @@ const config = {
     contentBase: './dist',
     historyApiFallback: true,
   },
+  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: require('html-webpack-template'),

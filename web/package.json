@@ -15,6 +15,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.47",
     "axios": "^0.19.2",
+    "countries-list": "^2.5.4",
     "effector": "^20.13.4",
     "effector-react": "^20.6.3",
     "final-form": "^4.19.1",
