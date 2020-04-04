@@ -61,7 +61,7 @@ export const ProfileForm = () => {
     'id',
     'is_visible',
     'nickname',
-    'nintendo_id',
+    'friend_code',
     'language',
     'commentary',
     'fruits',
@@ -98,10 +98,10 @@ export const ProfileForm = () => {
               }}
             />
             <Field
-              name='nintendo_id'
+              name='friend_code'
               component={TextField}
               parse={identity}
-              label='My Nintendo ID'
+              label='My Friend Code'
               className={classes.field}
               variant='outlined'
               InputLabelProps={{
@@ -128,7 +128,17 @@ export const ProfileForm = () => {
                 shrink: true,
               }}
             />
-
+            <Field
+              name='commentary'
+              component={TextField}
+              parse={identity}
+              label='A short message for other players'
+              className={classes.field}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant='outlined'
+            />
             <Field
               name='commentary'
               component={TextField}

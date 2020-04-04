@@ -16,7 +16,7 @@ class Player(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     is_visible = models.BooleanField(default=False)
     nickname = models.CharField(max_length=200)
-    nintendo_id = models.CharField(max_length=64, null=True)
+    friend_code = models.CharField(max_length=64, null=True)
     language = models.CharField(max_length=64)
     creation_date = models.DateField(default=None, null=True)
     bump_date = models.DateField(default=None, null=True)

@@ -30,7 +30,7 @@ export default function PlayersTable() {
         <TableHead>
           <TableRow>
             <TableCell>Player Nickname</TableCell>
-            <TableCell>Nintendo ID</TableCell>
+            <TableCell>Friend Code</TableCell>
             <TableCell>Language</TableCell>
             <TableCell>Registered</TableCell>
           </TableRow>
@@ -41,7 +41,7 @@ export default function PlayersTable() {
               <TableCell component='th' scope='row'>
                 {player.nickname}
               </TableCell>
-              <TableCell>{player.nintendo_id}</TableCell>
+              <TableCell>{player.friend_code}</TableCell>
               <TableCell>{player.language}</TableCell>
               <TableCell>{player.creation_date}</TableCell>
             </TableRow>

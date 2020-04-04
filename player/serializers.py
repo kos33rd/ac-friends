@@ -20,7 +20,7 @@ class PlayerSerializer(serializers.ModelSerializer):
             'id',
             'nickname',
             'is_visible',
-            'nintendo_id',
+            'friend_code',
             'language',
             'creation_date',
             'bump_date',
