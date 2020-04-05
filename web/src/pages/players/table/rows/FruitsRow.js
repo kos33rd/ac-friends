@@ -26,7 +26,8 @@ export const fruitsSearchAndFilter = (selectedOptionIds, { fruits }) => {
   return !isEmpty(intersection(optionValues, fruits))
 }
 
-export const FruitsRowRenderer = (fruits, classes) => (rowData) => {
+export const FruitsRow = ({ rowData, fruits }) => {
+  const classes = useFruitsRowStyles()
   const { fruits: playerFruits } = rowData
   const fruitsString = map(
     playerFruits,

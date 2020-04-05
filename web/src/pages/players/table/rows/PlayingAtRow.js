@@ -4,7 +4,7 @@ import { chain, find, includes, merge, toNumber, map } from 'lodash'
 import Typography from '@material-ui/core/Typography'
 import { PLAY_DAYS, PLAYTIME } from '~/data/constants'
 
-export const usePlayingAtRowStyles = makeStyles((theme) => ({}))
+// export const usePlayingAtRowStyles = makeStyles((theme) => ({}))
 
 export const playingLookup = merge(
   chain(PLAYTIME).keyBy('id').mapValues('value').value(),
@@ -24,7 +24,8 @@ export const playingSearchAndFilter = (
   )
 }
 
-export const PlayingAtRowRenderer = (classes) => (rowData) => {
+export const PlayingAtRow = ({ rowData }) => {
+  // const classes = usePlayingAtRowStyles()
   const { playtime, playdays } = rowData
   const playtimeString = (find(PLAYTIME, { id: playtime }) || {}).value
   const playDaysString = (find(PLAY_DAYS, { id: playdays }) || {}).value

@@ -17,7 +17,8 @@ export const useNicknameRowStyles = makeStyles((theme) => ({
   },
 }))
 
-export const NicknameRowRenderer = (classes) => (rowData) => {
+export const NicknameRow = ({ rowData }) => {
+  const classes = useNicknameRowStyles()
   const { avatar_url, nickname, language } = rowData
   return (
     <div className={classes.column}>

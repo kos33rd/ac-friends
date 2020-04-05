@@ -7,26 +7,15 @@ import MaterialTable from 'material-table'
 import { isEmpty } from 'lodash'
 
 import playersStore, { fetchPlayers } from '~/data/stores/players'
-import {
-  NicknameRowRenderer,
-  useNicknameRowStyles,
-} from '~/pages/players/table/rows/NicknameRow'
-import {
-  fruitsLookup,
-  FruitsRowRenderer,
-  fruitsSearchAndFilter,
-  useFruitsRowStyles,
-} from '~/pages/players/table/rows/FruitsRow'
+import { NicknameRow, } from '~/pages/players/table/rows/NicknameRow'
+
 import { $fruits, $fruitsIsLoading, fetchFruits } from '~/data/stores/fruits'
-import {
-  PlayingAtRowRenderer,
-  playingLookup,
-  playingSearchAndFilter,
-  usePlayingAtRowStyles,
-} from '~/pages/players/table/rows/PlayingAtRow'
 import Typography from '@material-ui/core/Typography'
 import { Checkbox } from '@material-ui/core'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { fruitsLookup, FruitsRow, fruitsSearchAndFilter } from '~/pages/players/table/rows/FruitsRow'
+import { PlayingAtRow, playingLookup, playingSearchAndFilter } from '~/pages/players/table/rows/PlayingAtRow'
+import { CommentaryRow } from '~/pages/players/table/rows/CommentaryRow'
 
 const useStyles = makeStyles({
   table: {
@@ -44,9 +33,6 @@ const useStyles = makeStyles({
 
 export default function PlayersTable() {
   const classes = useStyles()
-  const nicknameRowClasses = useNicknameRowStyles()
-  const fruitsRowClasses = useFruitsRowStyles()
-  const playingAtRowClasses = usePlayingAtRowStyles()
 
   const fruits = useStore($fruits)
   const fruitsIsLoading = useStore($fruitsIsLoading)
@@ -81,7 +67,7 @@ export default function PlayersTable() {
         columns={[
           {
             title: '',
-            render: NicknameRowRenderer(nicknameRowClasses),
+            render: (rowData) => <NicknameRow rowData={rowData} />,
             filtering: false,
           },
           { title: 'Friend Code', field: 'friend_code', filtering: false },
@@ -94,17 +80,22 @@ export default function PlayersTable() {
           {
             title: 'Fruits',
             field: 'fruits',
-            render: FruitsRowRenderer(fruits, fruitsRowClasses),
+            render: (rowData) => <FruitsRow rowData={rowData} fruits={fruits} />,
             lookup: fruitsLookup(fruits),
             customFilterAndSearch: fruitsSearchAndFilter,
           },
           {
             title: 'Playing',
-            render: PlayingAtRowRenderer(playingAtRowClasses),
+            render: (rowData) => <PlayingAtRow rowData={rowData} />,
             lookup: playingLookup,
             customFilterAndSearch: playingSearchAndFilter,
           },
-          { title: 'Comment', field: 'commentary', filtering: false },
+          {
+            title: 'Comment',
+            field: 'commentary',
+            render: (rowData) => <CommentaryRow rowData={rowData} />,
+            filtering: false,
+          },
         ]}
         data={list}
         options={{
