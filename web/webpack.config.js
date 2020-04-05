@@ -130,6 +130,9 @@ const config = {
         process.env.API_CLIENT_SECRET ||
           '5M7qczd8UvuQA58rerF5rwAFrrezGyiNG4NwEDj7pxXjJX0fZwPIq7xS1OSyOaGqhrvnoVloyOW7FkcVdqwnB6F3aQXfgZ9yGZ82NIzKLjRrlit9ed3wgwL3UOjKBLGd'
       ),
+      GOOGLE_ANALYTICS_ID: JSON.stringify(
+        process.env.GOOGLE_ANALYTICS_ID || 'UA-18174506-2'
+      ),
     }),
   ],
 }
