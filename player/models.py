@@ -44,7 +44,7 @@ class Player(models.Model):
     creation_date = models.DateField(default=None, null=True)
     bump_date = models.DateField(default=None, null=True)
     commentary = models.TextField(default=None, null=True, blank=True)
-    avatar_url = models.CharField(max_length=2048, null=True)
+    avatar_url = models.CharField(max_length=2048, null=True, blank=True)
     fruits = models.ManyToManyField(to='player.Fruit', related_name='player_fruits', blank=True)
     playtime = models.IntegerField(choices=PLAYTIME_STATUS, default=PLAYTIME_DURING_DAY)
     playdays = models.IntegerField(choices=PLAYDAYS_STATUS, default=PLAYDAYS_EVERY_DAY)
