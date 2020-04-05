@@ -5,6 +5,9 @@ import Divider from '@material-ui/core/Divider'
 import { ProfileForm } from '~/pages/profile/ProfileForm'
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { useStore } from 'effector-react'
+import { $profileIsBumped, $profileIsBumping, bumpProfile } from '~/data/stores/profile'
+import { noop } from 'lodash'
 
 const useStyles = makeStyles((theme) => ({
   formPaper: {
@@ -26,8 +29,9 @@ const useStyles = makeStyles((theme) => ({
 
 export const ProfilePaper = () => {
   const classes = useStyles()
-
-  const onBumpClick = () => console.log('Profile bumped up')
+  const profileIsBumping = useStore($profileIsBumping)
+  const profileIsBumped = useStore($profileIsBumped)
+  const onBumpClick = () => bumpProfile()
 
   return (
     <Paper elevation={3} className={classes.formPaper}>
@@ -37,11 +41,15 @@ export const ProfilePaper = () => {
         </Typography>
 
         <Button
+          disabled={profileIsBumping}
           className={classes.bumpIcon}
           color='default'
-          onClick={onBumpClick}
+          onClick={profileIsBumped ? noop : onBumpClick}
         >
-          Bump me up
+          {profileIsBumped
+            ? 'Bumped!'
+            : 'Bump me up!'
+          }
         </Button>
       </div>
 

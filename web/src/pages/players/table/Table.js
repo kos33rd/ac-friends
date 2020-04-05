@@ -16,6 +16,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import { fruitsLookup, FruitsRow, fruitsSearchAndFilter } from '~/pages/players/table/rows/FruitsRow'
 import { PlayingAtRow, playingLookup, playingSearchAndFilter } from '~/pages/players/table/rows/PlayingAtRow'
 import { CommentaryRow } from '~/pages/players/table/rows/CommentaryRow'
+import { BumpDateRow } from '~/pages/players/table/rows/BumpDateRow'
 
 const useStyles = makeStyles({
   table: {
@@ -75,6 +76,7 @@ export default function PlayersTable() {
             title: 'Bumped',
             field: 'bump_date',
             type: 'date',
+            render: (rowData) => <BumpDateRow rowData={rowData} />,
             filtering: false,
           },
           {

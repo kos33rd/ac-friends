@@ -34,3 +34,11 @@ $profileIsUpdated.on(fetchProfile.fail, () => false)
 export const bumpProfile = createEffect({
   handler: () => api.post('profile/bump/', {}).then((res) => res.data),
 })
+
+export const $profileBumpError = createStore(false)
+export const $profileIsBumped = createStore(false)
+export const $profileIsBumping = bumpProfile.pending
+
+$profileBumpError.on(bumpProfile.fail, (store, err) => err)
+$profileIsBumped.on(bumpProfile.done, () => true)
+$profileIsBumped.on(bumpProfile.fail, () => false)

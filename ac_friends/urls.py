@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from player.views import players_list, profile, fruits
+from player.views import players_list, profile, fruits, bump_profile
 
 urlpatterns = [
     path('api/secret-admin-url/', admin.site.urls),
@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^api/auth/', include('rest_framework_social_oauth2.urls')),
     path('api/players/', players_list),
     path('api/profile/', profile),
+    path('api/profile/bump/', bump_profile),
     path('api/fruits/', fruits),
 ]
