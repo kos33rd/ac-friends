@@ -10,7 +10,7 @@ from .serializers import PlayerSerializer, FruitSerializer
 
 @api_view(["GET"])
 def players_list(response):
-    all_players = Player.objects.filter(is_visible=True)
+    all_players = Player.objects.order_by('-bump_date').filter(is_visible=True)[:100]
     serializer = PlayerSerializer(all_players, many=True)
     return JsonResponse(serializer.data, safe=False)
 
