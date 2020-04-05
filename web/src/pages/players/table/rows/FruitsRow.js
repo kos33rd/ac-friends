@@ -1,6 +1,15 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { find, map, toUpper } from 'lodash'
+import {
+  chain,
+  find,
+  includes,
+  intersection,
+  isEmpty,
+  map,
+  merge,
+  toNumber,
+} from 'lodash'
 import Typography from '@material-ui/core/Typography'
 
 export const useFruitsRowStyles = makeStyles((theme) => ({
@@ -8,6 +17,14 @@ export const useFruitsRowStyles = makeStyles((theme) => ({
     display: 'flex',
   },
 }))
+
+export const fruitsLookup = (fruits) =>
+  chain(fruits).keyBy('id').mapValues('name').value()
+
+export const fruitsSearchAndFilter = (selectedOptionIds, { fruits }) => {
+  const optionValues = map(selectedOptionIds, toNumber)
+  return !isEmpty(intersection(optionValues, fruits))
+}
 
 export const FruitsRowRenderer = (fruits, classes) => (rowData) => {
   const { fruits: playerFruits } = rowData
