@@ -8,12 +8,14 @@ import {
 
 import { Header } from './Header'
 import { Footer } from './Footer'
+import background from '~/assets/backgrounds/dots.png'
 
 const useLayoutStyles = makeStyles((theme) => ({
   main: {
     maxWidth: 1280,
-    margin: '0 auto 48px',
-    padding: '0 24px',
+    margin: '0 auto',
+    padding: '0 24px 48px',
+    backgroundImage: `url(${background})`
   },
 }))
 
@@ -26,7 +28,8 @@ const theme = createMuiTheme({
       main: '#9a6033',
     },
     background: {
-      default: '#E4E4E4',
+      // default: '#E4E4E4',
+      default: '#ebebeb',
     },
   },
   typography: {
