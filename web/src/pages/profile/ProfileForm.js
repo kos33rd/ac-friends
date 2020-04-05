@@ -14,6 +14,9 @@ import { $profile, updateProfile } from '~/data/stores/profile'
 import { PaddedAlert } from '~/pages/profile/components/PaddedAlert'
 import { CountrySelect } from '~/pages/profile/components/CountrySelect'
 import { FruitsSelect } from '~/pages/profile/components/FruitsSelect'
+import { Select } from '~/pages/profile/components/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme) => ({
   formPaper: {
@@ -30,12 +33,24 @@ const useStyles = makeStyles((theme) => ({
   field: {
     marginBottom: 32,
   },
+  flexField: {
+    flex: '1 0 auto',
+  },
   fieldsGroup: {
     marginBottom: 16,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',
   },
+  sideLabel: {
+    marginTop: 16,
+    marginRight: 8,
+  },
+  fieldsRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'stretch',
+  }
 }))
 
 export const ProfileForm = () => {
@@ -65,6 +80,8 @@ export const ProfileForm = () => {
     'language',
     'commentary',
     'fruits',
+    'playtime',
+    'playdays',
   ])
 
   return (
@@ -102,6 +119,7 @@ export const ProfileForm = () => {
               component={TextField}
               parse={identity}
               label='My Friend Code'
+              placeholder='SW-####-####-####'
               className={classes.field}
               variant='outlined'
               InputLabelProps={{
@@ -118,6 +136,52 @@ export const ProfileForm = () => {
                 shrink: true,
               }}
             />
+
+            <div className={classes.fieldsRow}>
+              <Typography variant='body1' className={classes.sideLabel}>
+                I usually play
+              </Typography>
+              <Field
+                name='playtime'
+                component={Select}
+                displayEmpty
+                parse={identity}
+                className={classes.field}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                formControlProps={{
+                  variant: 'outlined',
+                  className: classes.flexField,
+                }}
+              >
+                <MenuItem value={1}>During the day</MenuItem>
+                <MenuItem value={2}>In the morning</MenuItem>
+                <MenuItem value={3}>In the evening</MenuItem>
+                <MenuItem value={4}>At night</MenuItem>
+                <MenuItem value={5}>All day long 😵</MenuItem>
+              </Field>
+              <Typography variant='body1' className={classes.sideLabel}/>
+              <Field
+                name='playdays'
+                component={Select}
+                displayEmpty
+                parse={identity}
+                className={classes.field}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                formControlProps={{
+                  variant: 'outlined',
+                  className: classes.flexField,
+                }}
+              >
+                <MenuItem value={1}>Every day</MenuItem>
+                <MenuItem value={2}>On weekends</MenuItem>
+                <MenuItem value={3}>On weekdays</MenuItem>
+              </Field>
+            </div>
+
             <Field
               name='fruits'
               component={FruitsSelect}
@@ -127,17 +191,6 @@ export const ProfileForm = () => {
               InputLabelProps={{
                 shrink: true,
               }}
-            />
-            <Field
-              name='commentary'
-              component={TextField}
-              parse={identity}
-              label='A short message for other players'
-              className={classes.field}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant='outlined'
             />
             <Field
               name='commentary'

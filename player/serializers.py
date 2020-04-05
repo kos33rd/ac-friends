@@ -26,5 +26,7 @@ class PlayerSerializer(serializers.ModelSerializer):
             'bump_date',
             'commentary',
             'avatar_url',
-            'fruits'
+            'fruits',
+            'playtime',
+            'playdays',
         ]
