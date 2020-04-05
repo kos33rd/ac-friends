@@ -45,9 +45,9 @@ class Player(models.Model):
     bump_date = models.DateField(default=None, null=True)
     commentary = models.TextField(default=None, null=True, blank=True)
     avatar_url = models.CharField(max_length=2048, null=True)
-    fruits = models.ManyToManyField(to='player.Fruit', related_name='player_fruits')
-    playtime = models.CharField(max_length=32, choices=PLAYTIME_STATUS, default=PLAYTIME_DURING_DAY)
-    playdays = models.CharField(max_length=32, choices=PLAYDAYS_STATUS, default=PLAYDAYS_EVERY_DAY)
+    fruits = models.ManyToManyField(to='player.Fruit', related_name='player_fruits', blank=True)
+    playtime = models.IntegerField(choices=PLAYTIME_STATUS, default=PLAYTIME_DURING_DAY)
+    playdays = models.IntegerField(choices=PLAYDAYS_STATUS, default=PLAYDAYS_EVERY_DAY)
 
     def __str__(self):
         return self.nickname
