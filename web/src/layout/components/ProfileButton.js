@@ -25,10 +25,6 @@ const GoToProfileButton = () => {
 }
 
 export const ProfileButton = () => {
-  useEffect(() => {
-    fetchProfile()
-  }, [])
-
   const isAuthorized = useStore($isAuthorized)
   const profileIsLoaded = !useStore(fetchProfile.pending)
 
