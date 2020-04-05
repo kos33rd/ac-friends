@@ -5,12 +5,12 @@ import Grid from '@material-ui/core/Grid'
 import { useStore } from 'effector-react'
 import { CircularProgress } from '@material-ui/core'
 
-import villager1 from '~/assets/villager1.png'
+import villager3 from '~/assets/villager3.png'
 import villager2 from '~/assets/villager2.png'
 import textBubble from '~/assets/textBubble.svg'
 import { $profile, $profileIsLoading } from '~/data/stores/profile'
 
-const villagers = [villager1, villager2]
+const villagers = [villager3, villager2]
 const villager = villagers[Math.floor(Math.random() * villagers.length)]
 
 const useStyles = makeStyles((theme) => ({
