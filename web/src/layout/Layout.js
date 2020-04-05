@@ -15,7 +15,7 @@ const useLayoutStyles = makeStyles((theme) => ({
     maxWidth: 1280,
     margin: '0 auto',
     padding: '0 24px 48px',
-    backgroundImage: `url(${background})`
+    backgroundImage: `url(${background})`,
   },
 }))
 

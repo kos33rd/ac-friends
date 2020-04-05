@@ -48,7 +48,7 @@ export const Header = () => {
           noWrap
           className={classes.title}
         >
-          <Link component={RouterLink} to="/" color='secondary'>
+          <Link component={RouterLink} to='/' color='secondary'>
             Animal Crossing: New Friends
           </Link>
         </Typography>

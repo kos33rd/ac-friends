@@ -6,7 +6,11 @@ import { useStore } from 'effector-react'
 
 import { $fruits, $fruitsIsLoading, fetchFruits } from '~/data/stores/fruits'
 
-export const FruitsSelect = ({ input: { name, value, onChange, ...restInput }, meta, ...rest }) => {
+export const FruitsSelect = ({
+  input: { name, value, onChange, ...restInput },
+  meta,
+  ...rest
+}) => {
   const fruits = useStore($fruits)
   const fruitsIsLoading = useStore($fruitsIsLoading)
   useEffect(() => {

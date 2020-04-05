@@ -4,9 +4,17 @@ import TextField from '@material-ui/core/TextField'
 import { getEmojiFlag, languages } from 'countries-list'
 import { find, reduce, toUpper } from 'lodash'
 
-const options = reduce(languages, (acc, lang, code) => [...acc, { code, ...lang }], [])
+const options = reduce(
+  languages,
+  (acc, lang, code) => [...acc, { code, ...lang }],
+  []
+)
 
-export const CountrySelect = ({ input: { name, value, onChange, ...restInput }, meta, ...rest }) => {
+export const CountrySelect = ({
+  input: { name, value, onChange, ...restInput },
+  meta,
+  ...rest
+}) => {
   const selectedOption = find(options, { code: value })
   return (
     <Autocomplete

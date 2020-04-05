@@ -9,14 +9,15 @@ import { useStore } from 'effector-react'
 import { pick, mapValues, join, get, identity } from 'lodash'
 import { FORM_ERROR } from 'final-form'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import MenuItem from '@material-ui/core/MenuItem'
+import Typography from '@material-ui/core/Typography'
 
 import { $profile, updateProfile } from '~/data/stores/profile'
 import { PaddedAlert } from '~/pages/profile/components/PaddedAlert'
 import { CountrySelect } from '~/pages/profile/components/CountrySelect'
 import { FruitsSelect } from '~/pages/profile/components/FruitsSelect'
 import { Select } from '~/pages/profile/components/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import Typography from '@material-ui/core/Typography'
+import { PLAY_DAYS, PLAYTIME } from '~/data/constants'
 
 const useStyles = makeStyles((theme) => ({
   formPaper: {
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
-  }
+  },
 }))
 
 export const ProfileForm = () => {
@@ -88,7 +89,13 @@ export const ProfileForm = () => {
     <Form
       onSubmit={onProfileSubmit}
       initialValues={initialValues}
-      render={({ handleSubmit, submitError, submitting, submitSucceeded, values }) => (
+      render={({
+        handleSubmit,
+        submitError,
+        submitting,
+        submitSucceeded,
+        values,
+      }) => (
         <form onSubmit={handleSubmit} className={classes.form}>
           <FormControlLabel
             control={
@@ -155,13 +162,13 @@ export const ProfileForm = () => {
                   className: classes.flexField,
                 }}
               >
-                <MenuItem value={1}>During the day</MenuItem>
-                <MenuItem value={2}>In the morning</MenuItem>
-                <MenuItem value={3}>In the evening</MenuItem>
-                <MenuItem value={4}>At night</MenuItem>
-                <MenuItem value={5}>All day long 😵</MenuItem>
+                {PLAYTIME.map(({ id, value }) => (
+                  <MenuItem key={id} value={id}>
+                    {value}
+                  </MenuItem>
+                ))}
               </Field>
-              <Typography variant='body1' className={classes.sideLabel}/>
+              <Typography variant='body1' className={classes.sideLabel} />
               <Field
                 name='playdays'
                 component={Select}
@@ -176,9 +183,11 @@ export const ProfileForm = () => {
                   className: classes.flexField,
                 }}
               >
-                <MenuItem value={1}>Every day</MenuItem>
-                <MenuItem value={2}>On weekends</MenuItem>
-                <MenuItem value={3}>On weekdays</MenuItem>
+                {PLAY_DAYS.map(({ id, value }) => (
+                  <MenuItem key={id} value={id}>
+                    {value}
+                  </MenuItem>
+                ))}
               </Field>
             </div>
 

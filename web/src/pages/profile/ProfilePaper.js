@@ -6,7 +6,6 @@ import { ProfileForm } from '~/pages/profile/ProfileForm'
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
-
 const useStyles = makeStyles((theme) => ({
   formPaper: {
     margin: '64px auto',

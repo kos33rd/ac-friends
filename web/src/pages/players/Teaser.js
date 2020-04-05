@@ -104,7 +104,11 @@ export const Teaser = () => {
           <div className={classes.banner}>
             <img src={textBubble} className={classes.textBubble} />
             <div className={classes.bubbleTextWrap}>
-              <Typography variant='h4' component='h2' className={classes.bubbleText}>
+              <Typography
+                variant='h4'
+                component='h2'
+                className={classes.bubbleText}
+              >
                 Here you can find a friends to play Animal Crossing online with.
               </Typography>
             </div>
