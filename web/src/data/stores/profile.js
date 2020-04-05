@@ -3,7 +3,7 @@ import api from '~/data/api'
 
 // Profile fetch
 export const fetchProfile = createEffect({
-  handler: () => api.get('profile').then((res) => res.data),
+  handler: () => api.get('profile/').then((res) => res.data),
 })
 
 export const $profile = createStore({})
@@ -32,5 +32,5 @@ $profileIsUpdated.on(fetchProfile.fail, () => false)
 
 // Profile bump (TBD)
 export const bumpProfile = createEffect({
-  handler: () => api.post('profile/bump', {}).then((res) => res.data),
+  handler: () => api.post('profile/bump/', {}).then((res) => res.data),
 })

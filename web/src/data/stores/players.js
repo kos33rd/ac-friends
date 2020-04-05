@@ -20,7 +20,7 @@ export const {
 export const fetchPlayers = createEffect({
   handler: () => {
     setPlayersIsLoading()
-    return api.get('players').then((res) => res.data)
+    return api.get('players/').then((res) => res.data)
   },
 })
 

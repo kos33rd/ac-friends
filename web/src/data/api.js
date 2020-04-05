@@ -17,7 +17,6 @@ api.interceptors.request.use(
 
       if (accessToken) {
         config.headers['Authorization'] = 'Bearer ' + accessToken
-        console.log('Authorization HEADER SET', config.headers['Authorization'])
       }
     }
 
