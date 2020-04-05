@@ -7,14 +7,22 @@ import MaterialTable from 'material-table'
 import { isEmpty } from 'lodash'
 
 import playersStore, { fetchPlayers } from '~/data/stores/players'
-import { NicknameRow, } from '~/pages/players/table/rows/NicknameRow'
+import { NicknameRow } from '~/pages/players/table/rows/NicknameRow'
 
 import { $fruits, $fruitsIsLoading, fetchFruits } from '~/data/stores/fruits'
 import Typography from '@material-ui/core/Typography'
 import { Checkbox } from '@material-ui/core'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import { fruitsLookup, FruitsRow, fruitsSearchAndFilter } from '~/pages/players/table/rows/FruitsRow'
-import { PlayingAtRow, playingLookup, playingSearchAndFilter } from '~/pages/players/table/rows/PlayingAtRow'
+import {
+  fruitsLookup,
+  FruitsRow,
+  fruitsSearchAndFilter,
+} from '~/pages/players/table/rows/FruitsRow'
+import {
+  PlayingAtRow,
+  playingLookup,
+  playingSearchAndFilter,
+} from '~/pages/players/table/rows/PlayingAtRow'
 import { CommentaryRow } from '~/pages/players/table/rows/CommentaryRow'
 import { BumpDateRow } from '~/pages/players/table/rows/BumpDateRow'
 
@@ -82,7 +90,9 @@ export default function PlayersTable() {
           {
             title: 'Fruits',
             field: 'fruits',
-            render: (rowData) => <FruitsRow rowData={rowData} fruits={fruits} />,
+            render: (rowData) => (
+              <FruitsRow rowData={rowData} fruits={fruits} />
+            ),
             lookup: fruitsLookup(fruits),
             customFilterAndSearch: fruitsSearchAndFilter,
           },

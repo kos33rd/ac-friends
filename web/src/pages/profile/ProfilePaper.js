@@ -6,12 +6,16 @@ import { ProfileForm } from '~/pages/profile/ProfileForm'
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useStore } from 'effector-react'
-import { $profileIsBumped, $profileIsBumping, bumpProfile } from '~/data/stores/profile'
+import {
+  $profileIsBumped,
+  $profileIsBumping,
+  bumpProfile,
+} from '~/data/stores/profile'
 import { noop } from 'lodash'
 
 const useStyles = makeStyles((theme) => ({
   formPaper: {
-    margin: '64px auto',
+    margin: '64px auto 48px',
     padding: 32,
     maxWidth: 640,
   },
@@ -46,10 +50,7 @@ export const ProfilePaper = () => {
           color='default'
           onClick={profileIsBumped ? noop : onBumpClick}
         >
-          {profileIsBumped
-            ? 'Bumped!'
-            : 'Bump me up!'
-          }
+          {profileIsBumped ? 'Bumped!' : 'Bump me up!'}
         </Button>
       </div>
 

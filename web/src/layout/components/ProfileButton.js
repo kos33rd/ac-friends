@@ -9,27 +9,24 @@ import Button from '@material-ui/core/Button'
 import { authorizeWithGoogle } from '~/data/authorizeWithGoogle'
 import { $isAuthorized, fetchProfile } from '~/data/stores/profile'
 
-const GoToProfileButton = () => {
-  const history = useHistory()
-  const navigateToProfile = () => history.push('/profile')
-
-  return (
-    <Button
-      color='secondary'
-      startIcon={<FaceIcon />}
-      onClick={navigateToProfile}
-    >
-      My Profile
-    </Button>
-  )
-}
+const GoToProfileButton = ({ navigateToProfile }) => (
+  <Button
+    color='secondary'
+    startIcon={<FaceIcon />}
+    onClick={navigateToProfile}
+  >
+    My Profile
+  </Button>
+)
 
 export const ProfileButton = () => {
   const isAuthorized = useStore($isAuthorized)
   const profileIsLoaded = !useStore(fetchProfile.pending)
+  const history = useHistory()
+  const navigateToProfile = () => history.push('/profile')
 
   const handleAuthSuccess = (response) => {
-    authorizeWithGoogle(response).then(fetchProfile)
+    authorizeWithGoogle(response).then(fetchProfile).then(navigateToProfile)
   }
 
   const handleAuthFailure = () => {
@@ -38,7 +35,7 @@ export const ProfileButton = () => {
 
   return profileIsLoaded ? (
     isAuthorized ? (
-      <GoToProfileButton />
+      <GoToProfileButton navigateToProfile={navigateToProfile} />
     ) : (
       <GoogleLogin
         clientId={GOOGLE_CLIENT_ID}

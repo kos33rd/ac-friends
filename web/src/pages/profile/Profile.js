@@ -2,6 +2,8 @@ import React from 'react'
 import { useStore } from 'effector-react'
 import { makeStyles } from '@material-ui/core/styles'
 import { CircularProgress } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import { useHistory } from 'react-router-dom'
 
 import { $profileIsLoading } from '~/data/stores/profile'
 import { ProfilePaper } from '~/pages/profile/ProfilePaper'
@@ -32,11 +34,18 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  bottom: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 }))
 
 const Profile = () => {
   const classes = useStyles()
   const profileIsLoading = useStore($profileIsLoading)
+  const history = useHistory()
+  const navigateToPlayersList = () => history.push('/')
 
   if (profileIsLoading) {
     return <CircularProgress />
@@ -47,6 +56,15 @@ const Profile = () => {
       <img src={timmy_nook} className={classes.rightBackdrop} />
       <img src={tommy_nook} className={classes.leftBackdrop} />
       <ProfilePaper />
+      <div className={classes.bottom}>
+        <Button
+          color='secondary'
+          variant='outlined'
+          onClick={navigateToPlayersList}
+        >
+          Back to players list
+        </Button>
+      </div>
     </div>
   )
 }

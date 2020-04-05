@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
   banner: {
     position: 'relative',
+    cursor: 'pointer',
     height: '210px',
     padding: '60px',
   },
@@ -93,15 +94,25 @@ const WelcomeText = () => {
   )
 }
 
+const hints = [
+  'Here you can find a friends to play Animal Crossing online with.',
+  'You can join us - just log in with Google, fill up your profile and make it visible for everyone.',
+  'You can place you profile at top of the list - just click "Bump Me Up!" on profile page',
+]
+
 export const Teaser = () => {
   const classes = useStyles()
+  const [hintIndex, setHintIndex] = useState(0)
 
   return (
     <div className={classes.container}>
       <Grid container>
         <Grid item xs={8}>
           <WelcomeText />
-          <div className={classes.banner}>
+          <div
+            className={classes.banner}
+            onClick={() => setHintIndex(hintIndex + 1)}
+          >
             <img src={textBubble} className={classes.textBubble} />
             <div className={classes.bubbleTextWrap}>
               <Typography
@@ -109,7 +120,7 @@ export const Teaser = () => {
                 component='h2'
                 className={classes.bubbleText}
               >
-                Here you can find a friends to play Animal Crossing online with.
+                {hints[hintIndex % hints.length]}
               </Typography>
             </div>
           </div>

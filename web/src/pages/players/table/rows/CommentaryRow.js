@@ -13,23 +13,22 @@ export const useCommentaryRowStyles = makeStyles((theme) => ({
   popover: {
     maxWidth: 380,
     margin: 16,
-  }
+  },
 }))
 
 export const CommentaryRow = ({ rowData }) => {
   const classes = useCommentaryRowStyles()
   const { commentary } = rowData
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null)
 
   const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-  const open = Boolean(anchorEl);
-
+    setAnchorEl(null)
+  }
+  const open = Boolean(anchorEl)
 
   return (
     <div
@@ -37,7 +36,9 @@ export const CommentaryRow = ({ rowData }) => {
       onMouseEnter={handlePopoverOpen}
       onMouseLeave={handlePopoverClose}
     >
-      <Typography>{truncate(commentary, { length: 50, separator: /,? +/ })}</Typography>
+      <Typography>
+        {truncate(commentary, { length: 50, separator: /,? +/ })}
+      </Typography>
       <Popover
         open={open}
         anchorEl={anchorEl}

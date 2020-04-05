@@ -58,11 +58,7 @@ export const Header = () => {
             Animal Crossing: New Friends
           </Link>
         </Typography>
-        {showLogout
-          ? <LogoutButton />
-          : <ProfileButton />
-        }
-
+        {showLogout ? <LogoutButton /> : <ProfileButton />}
       </Toolbar>
     </AppBar>
   )
