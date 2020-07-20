@@ -21,7 +21,7 @@
     "effector-react": "^20.6.3",
     "final-form": "^4.19.1",
     "final-form-material-ui": "^0.3.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "material-table": "^1.57.2",
     "moment": "^2.24.0",
     "react": "^16.13.1",
